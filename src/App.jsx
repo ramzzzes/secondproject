@@ -18,7 +18,7 @@ const App=()=>{
   }, []);
   
   useEffect(() => {
-    console.log(pokemon?.abilities[0]?.ability.name);
+    // console.log(pokemon?.abilities[0]?.ability.name);
   },[pokemon?.abilities[0]])
  
    
