@@ -1,0 +1,6 @@
+.movie{
+    border:1px solid green;
+    border-radius: 20px;
+    overflow: hidden;
+    margin-right: 12px;
+}
