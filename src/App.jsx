@@ -1,31 +1,42 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import './App.css';
- import SimpleImageSlider from "react-simple-image-slider";
+import { Link, Route, Routes } from 'react-router-dom';
+import Home from './Home';
+import About from './About'
+import City from './City';
+import NotFound from './NotFound';
+import NewCity from './NewCity';
+import { useDispatch, useSelector } from 'react-redux';
+import {UserContext} from './context/UserContext'
  
 
 const App=()=>{
-  const [pokemon, getPokemon] = useState([]);
 
-  async function logMovies() {
-    const response = await fetch("https://pokeapi.co/api/v2/pokemon/ditto");
-    const pok = await response.json();
-     getPokemon(pok);
-  }
+    const [name,setName] = useState(0)
+    const [age,setAge] = useState('')
+    const [email,setEmail] = useState('')
+    
 
-  useEffect(() => {
-    // logMovies();
-  }, []);
-  
-  useEffect(() => {
-    // console.log(pokemon?.abilities[0]?.ability.name);
-  },[pokemon?.abilities[0]])
- 
-   
-  
-  // console.log(pokemon);
-
-  return <div>{pokemon.map} </div>;
+    return (
+      <UserContext.Provider value={{
+        name,
+        setName,
+        age,
+        setAge,
+        email,
+        setEmail
+      }}>
+          <Link to={'/'}>Home</Link>
+          <Link to={'/city'}>City</Link>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/city" element={<NewCity />} />
+            <Route path="/city/:city/:id" element={<City />} />
+            <Route path='*' element={<NotFound/>} />
+          </Routes>
+      </UserContext.Provider>
+    )
 }
 
 export default App
