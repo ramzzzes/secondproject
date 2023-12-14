@@ -13,7 +13,7 @@ import {UserContext} from './context/UserContext'
 
 const App=()=>{
 
-    const [name,setName] = useState(0)
+    const [name,setName] = useState('')
     const [age,setAge] = useState('')
     const [email,setEmail] = useState('')
     
