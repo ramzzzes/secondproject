@@ -1,21 +1,28 @@
 import { useContext, useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { UserContext } from "./context/UserContext"
 
 const Home = () => {
 
-    const {name,setName,age,setAge} = useContext(UserContext)
+    const {user,setUser} = useContext(UserContext)
+    const navigate = useNavigate()
 
+    const handleLogOut = () => {
+      localStorage.removeItem('user')
+      setUser(null)
+      navigate('/')
+    }
 
     return <div>
       <br />
-      this is Home component :  {name}
+      {user?.user_name}
       <br />
-      <button onClick={() => setName(name + 1)}>
-        increment
-      </button>
- 
+      {
+        user && <button onClick={handleLogOut}>Log out</button>
+      }
+      <br />
+      <b>this is adminpanel</b>
     </div>
 }
 

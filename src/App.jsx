@@ -9,31 +9,24 @@ import NotFound from './NotFound';
 import NewCity from './NewCity';
 import { useDispatch, useSelector } from 'react-redux';
 import {UserContext} from './context/UserContext'
+import User from './User';
+import Header from './Header';
  
 
 const App=()=>{
 
-    const [name,setName] = useState('')
-    const [age,setAge] = useState('')
-    const [email,setEmail] = useState('')
-    
+    const [user,setUser] = useState('')
 
     return (
       <UserContext.Provider value={{
-        name,
-        setName,
-        age,
-        setAge,
-        email,
-        setEmail
+        user,
+        setUser
       }}>
-          <Link to={'/'}>Home</Link>
-          <Link to={'/city'}>City</Link>
+          <Header/>
+           
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/city" element={<NewCity />} />
-            <Route path="/city/:city/:id" element={<City />} />
-            <Route path='*' element={<NotFound/>} />
+            <Route path="/" element={<User />} />
+            <Route path="/home" element={<Home />} />
           </Routes>
       </UserContext.Provider>
     )
